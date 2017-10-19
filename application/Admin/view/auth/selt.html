@@ -1,0 +1,6 @@
+{extend name='base/base'}
+{block name='content'}
+    {foreach $arr as $vv}
+     <p>用户名: {$vv['username']}  权限  {$vv['role_id']}</p> 
+    {/foreach}
+{/block}

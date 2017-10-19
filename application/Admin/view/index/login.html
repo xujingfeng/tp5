@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/login.css">
+    <script type="text/javascript" src="__STATIC__/js/jquery-3.2.1.js" ></script>
+    <script type="text/javascript" src="__STATIC__/js/bootstrap.js" ></script>
+    
+</head>
+
+<body>
+ <div style="width:1400px; height:800px;  margin:0 auto;padding-top:100px; background-color:pink; ">
+    <div style="width:600px;height:500px; border:1px solid black;margin-left:400px;background: url('static/img/bod.png'); background-size: 100% 100%;"> 
+    <div style="width:600px; height:80px; border:1px solid #ccc;">
+           <p style="font-size:35px; text-align:center;line-height:80px; letter-spacing:5px; font-family:'楷体'; font-weight:bold;">登录页面</p>
+    </div>
+    <form action=""  id='form'>
+        <p class="put">用户名<input class="input"  type="text" name="yonghu" placeholder="请输入用户名" ></p>
+        <span id="id1"></span><br>
+        <p class="put">密&nbsp;&nbsp;码<input class="input"  type="password" placeholder="请输入密码" name="pass"></p>
+        <span id="id2"></span><br> 
+    <div style="margin-left:220px;">
+        <img style="width:200px; height:80px;" id="imgs"  src="{:captcha_src()}" alt=""/>
+        <br>
+        <a style="margin-left:50px;" href="#" onclick="funclack()">看不清换一张</a>
+    </div> 
+        <p class="put">验证码<input class="input" id='yz' type="text" name="captcha" placeholder="请输入验证码"></p>
+        <span id="id3"></span><br>
+        <p class="put" ><input style="margin-left:60px;" type="button" value="登录" onclick="onsub()"></p>
+    </form>
+    </div>
+ </div>
+  <script type="text/javascript">
+           function funclack()
+           {
+                document.getElementById('imgs').src="{:captcha_src()}?a="+Math.random()*1000;
+                yz.select();
+
+           }
+           function onsub()
+           {
+                        $.ajax({
+                            type:'post',
+                            url:'login',
+                            data:$('form').serialize(),
+                            success:function(data)
+                            {  
+                                
+                                var datas=JSON.parse(data);
+                              /* console.log(datas);*/
+                                if(datas.status==1){
+                                    window.location.assign('llll');
+                                    return;
+                                }
+                                 if(datas.status==0){
+                                    alert('用户名或密码错误');
+                                    return;
+                                }
+
+                               $('#id1').html(datas.yonghu);
+                               $('#id2').html(datas.pass);
+                               $('#id3').html(datas.captcha);
+                            }
+                      });
+           }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{extend name='base/base'}
+{block name='content'}
+<div class="row" style=" width:800px;margin-left:50px;">
+  <div class="col-md-6" style="margin-left:-15px;">
+             <button id="butt">默认排序</button>
+             <button id="butt1">价格排序</button>
+             <button id="butt2">时间排序</button>
+  </div>
+  <div>
+      <form action="goodslist.php" method="get">
+          <div class="input-group" style="margin-left: 10px">
+
+            <input type="text" name='search' class="form-control" placeholder="Search for..." style="width: 80%">
+            <span class="input-group-btn" style="margin-left:0px;float: left;">
+              <button class="btn btn-default" type="submit" >Go!</button>
+            </span>
+          </div>
+      </form>
+    
+  </div>
+
+</div>
+     <table id='tb' class="table table-bordered" style="width:950px; margin-left:50px;">
+      <tr align="center" >
+      	<th style="font-family:'楷体';font-size:16px;" width="1%">序号</th>
+      	<th style="font-family:'楷体';font-size:16px;" width='12%'>类别</th>
+      	<th style="font-family:'楷体';font-size:16px;" width="10%">名称</th>
+      	<th style="font-family:'楷体';font-size:16px;" width="9%">作者</th>
+      	<th style="font-family:'楷体';font-size:16px;" width="6%">价格</th>
+      	<th style="font-family:'楷体';font-size:16px;" width="15%">文章封面图</th>
+        <th style="font-family:'楷体';font-size:16px;" width="13%">文章出版社</th>
+        <th style="font-family:'楷体';font-size:16px;" width="20%">文章的介绍</th>
+      	<th style="font-family:'楷体';font-size:16px;" width="14%" colspan="2">操作</th>
+      </tr>
+      {foreach $arr as $v}
+      <tr align="center" >
+      	  <td class="active" style="line-height: 70px;">{$v['autid']}</td>
+      	  <td class="warning" style="line-height: 70px;">{$v['title']}</td>
+		      <td class="success" style="line-height: 70px;">{$v['artname']}</td>
+    		  <td class="warning" style="line-height: 70px;">{$v['author']}</td>
+    		  <td class="danger" style="line-height: 70px;">{$v['price']}</td>
+    		  <td class="info"><img src="__STATIC__/../uploads/{$v['pic']}" width="70px" height="70px"></td>
+    		  <td class="danger" style="line-height: 70px;">{$v['publisher']}</td>
+          <td class="danger" style="line-height: 70px;">{$v['detail']}</td>
+    		  <td  style="line-height: 70px;width:7%;"><a href="huanyuan?autid={$v['autid']}">还原</a></td>
+    		  <td  style="line-height: 70px;width:7%;"><a href="qingchu?autid={$v['autid']}" onclick="return dele()">清空</a></td>
+      </tr>
+    {/foreach}
+  </table>
+  <script type="text/javascript">
+    function dele(){
+
+      return confirm('您确定要清除吗?');
+    }
+    //价格排序
+    butt.onclick=function(){
+
+      window.location.assign('');
+
+    }
+    //默认
+    butt1.onclick=function(){
+
+      window.location.assign('');
+
+    }
+    //时间
+    butt2.onclick=function(){
+
+      window.location.assign('');
+
+    }
+
+
+  </script>
+{/block}

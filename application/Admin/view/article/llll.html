@@ -1,0 +1,41 @@
+{extend name='base/base'}
+{block name='content'}
+<style type="text/css">
+	input
+	{
+		margin:50px;
+		width:100px;
+		height:40px;
+	}
+</style>
+<div style="margin-top:-50px;">
+  <form>
+	<input type="button" value="分类" onclick="closs()">
+	<input type="button" value="添加" onclick="goods()">
+	<input type="button" value="列表" onclick="lista()">
+	<input type="button" value="回收站" onclick="delet()">
+  </form> 
+</div>
+
+{/block}
+{block name='js'}
+<script type="text/javascript">
+	function closs(){
+		//alert();
+		window.location.assign('addclass');
+		
+	}
+	function goods()
+	{
+		window.location.assign('addgoods');
+	}
+	function lista()
+	{
+		window.location.assign('unlista');
+	}
+	function delet()
+	{
+		window.location.assign('undelet');
+	}
+</script>
+{/block}

@@ -1,0 +1,148 @@
+{extend name='base/base'}
+{block name='content'}
+<style type="text/css">  
+  .table td{width:150px;}
+  .classid
+  {
+    font-size:20px;
+    font-family:'楷体';
+   
+
+  }
+</style>
+<div style="margin-left:100px;">
+  <form  id='form' action="" method="post" enctype="multipart/form-data">
+    <table border="1" style="height:250px; width:800px;" class="table">
+       <tr>
+         <td colspan="4" style="text-align:center; font-size:30px; letter-spacing:15px; font-family:'华文新魏'">文章的修改</td>
+       </tr>
+       <tr>
+         <td class="classid">文章类别</td>
+         <td colspan="3">
+           <select style="width: 200px;height:25px; margin-top:6px; margin-left:160px;" name='classId'>
+               {foreach $arr1 as $v}
+                         <option value="{$v['id']}" {if condition='$v.id==$arr2.0.classid'}selected{else/}''{/if}>{$v['num']|str_repeat='->',###}{$v['title']}</option>
+               {/foreach}
+           </select>
+         </td>
+       </tr>
+       <tr>
+         <td class="classid">文章名称</td>
+         <td colspan="3">
+           <input type="text" value="{$arr2[0]['artname']}" class="form-control required"  name="artname" style="width:200px;margin-left:160px;" >
+        </td>
+       </tr>
+       <tr>
+        <td class="classid">作者</td>
+         <td colspan="3">
+           <input type="text" value="{$arr2[0]['author']}" class="form-control required"  name="author" style="width:200px;margin-left:160px;" >
+         </td>
+       </tr>
+       <tr>
+         <td class="classid">商品的价格</td>
+         <td colspan="3">
+           <input type="text" value="{$arr2[0]['price']}" class="form-control required" name="price" style="width:200px;margin-left:160px;">
+         </td>
+         
+        
+       </tr>
+    
+       <tr class="classid">
+         <td>文章出版社</td>
+         <td colspan="3">
+           <input type="text" value="{$arr2[0]['publisher']}" class="form-control required" name="publisher" style="width:200px;margin-left:160px;">
+         </td>
+       </tr>
+       <tr>
+         <td class="classid">文章封面图</td>
+         <td colspan="3">
+           <input type="file" name="pic" onchange='jjjj(this)' style="margin-left:160px;">
+           <div id="previews" style="margin-left:160px;">
+            <img id="imghead" width=100 height=100 border=0 src="_STATIC__/../uploads/{$arr2[0]['pic']}">
+           </div>
+         </td>
+       </tr>
+       <tr>
+          <td>文章介绍</td>
+          <td colspan="3">
+            
+          </td>
+       </tr>
+    </table>
+   
+  <script id="container" name="content" type="text/plain" style="height:400px; width:800px;margin-left:0px;">
+  {$arr2[0]['detail']}
+  </script>
+    <input type="submit" value='提交'>
+  </form>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="static/utf8-php/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="static/utf8-php/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container',{
+          autoFloatEnabled: true,
+
+          autoHeight: false
+        });
+    </script> 
+    </form>
+</div>
+{/block}
+{block name='js'}
+  <script type="text/javascript">
+  $("#sel").focus(function()
+    {
+        $("#sel").attr("size","12");
+    });
+    $("option").click(function()
+    {
+        $("#sel").removeAttr("size");
+        $("option").attr("selected");
+        $("#sel").blur();
+    });
+    $("#sel").blur(function(){
+      $("#sel").removeAttr("size");
+    })
+    $(function(){
+             $("#form").validate({
+                  rules:{
+                    artname:{
+                       required:true,
+                       rangelength:[2,50]
+                    },
+                    price:{
+                       required:true,
+                       number:true
+                    },
+                       publisher:{
+                       required:true
+                    },
+                    author:{
+                       required:true
+                    }
+                  },
+                  messages:{
+                        artname:{
+                          required:'文章的名称不能为空', 
+                          rangelength:'文章的长度必须是2-50个字符直接'
+                        },
+                        price:{
+                          required:'必须要填写',
+                          number:'文章的价格格式不正确'
+                        },
+                          publisher:{
+                          required:'必须要填写'
+                        },
+                        author:{
+                          required:'格式不正确'
+                        }
+                  }
+
+             });
+        })
+        
+   
+</script>
+{/block}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+   {foreach $res as $vv}
+      {$vv['uid']}
+      {$vv['unname']}
+   {/foreach}
+   {$res->render()}
+   <br>
+   {$page}
+</body>
+<style type="text/css">
+	.pagination
+	{
+      list-style:none;
+	}
+	.pagination li
+	{
+		float:left;
+		font-size:20px;
+		margin-left:5px;
+	}
+</style>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/base.css">
+  {block name='style'}{/block}
+	<script type="text/javascript" src="__STATIC__/js/jquery-3.2.1.js" ></script>
+	<script type="text/javascript" src="__STATIC__/js/bootstrap.js" ></script>
+	<script type="text/javascript" src="__STATIC__/js/fileshow.js" ></script>
+	<script type="text/javascript" src="__STATIC__/js/validate.js" ></script>
+</head>
+<body>
+<div class="container header">
+	<ul class="nav nav-pills">
+	  <li role="presentation" class="active"><a href="Login">后台首页</a></li>
+	  <li role="presentation"><a href="#"></a></li>
+	  <li role="presentation"><a href="#"></a></li>
+	</ul> 
+</div>
+
+<div class="container" >
+	 <div class="row">
+	 	  <div class="col-md-2 pinkc">
+	 	  	  <ul class="nav-menu clearfix unstyled">
+                <li><a href="llll" class="three-d"> 文章管理 <span class="three-d-box"><span class="front">文章管理</span><span class="back">文章管理</span></span> </a></li>
+                <li><a href="user" class="three-d"> 会员管理 <span class="three-d-box"><span class="front">会员管理</span><span class="back">会员管理</span></span> </a></li>
+                <li><a href="order" class="three-d"> 订单管理 <span class="three-d-box"><span class="front">订单管理</span><span class="back">订单管理</span></span> </a></li>
+                <li><a href="auth" class="three-d"> 权限管理 <span class="three-d-box"><span class="front">权限管理</span><span class="back">权限管理</span></span> </a></li>
+                <li><a href="#" class="three-d"> 系统设置 <span class="three-d-box"><span class="front">系统设置</span><span class="back">系统设置</span></span> </a></li>
+                <li><a href="#" class="three-d"> 信息咨询 <span class="three-d-box"><span class="front">信息咨询</span><span class="back">信息咨询</span></span> </a></li>
+                <li><a href="#" class="three-d"> 项目案例 <span class="three-d-box"><span class="front">项目案例</span><span class="back">项目案例</span></span> </a></li>
+                <li><a href="#" class="three-d"> 信息咨询 <span class="three-d-box"><span class="front">信息咨询</span><span class="back">信息咨询</span></span> </a></li>
+              </ul>
+
+	 	  </div> 
+	 	  <div class="col-md-10" style="margin-top:20px;">
+	 	      {block name='content'}
+
+	 	      {/block}
+	 	  </div> 
+	 </div>
+	
+</div>
+
+
+<div class="container footer">
+	 <div class="row">
+	 	  <div class="col-md-12"></div> 
+	 </div>
+	
+</div>
+{block name='js'}
+
+{/block}
+
+</body>
+</html>
+
+

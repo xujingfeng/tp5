@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+   <p>这里是模板文件喔！</p>
+   <form action="{:url('Demo/function2')}" method="post">  <!-- {:url('Demo/function2')} 中的function2是方法-->   
+   	  <input type="text" name="name">
+   	  <input type="submit" value="提交">
+   </form>
+   <hr/>
+   <form action="ass1" method="post">
+   	   <input type="text" name="name">
+   	   <input type="submit" value="登录">
+   </form>
+   {$xjf}<br>
+
+   {$arr1[0]}
+   {foreach $arr1 as $ass}
+       {$ass}
+   {/foreach}<br>
+
+
+
+   {$arr['name']}<br>
+
+   {foreach $arr as $key=>$value}
+      {$key.'='}
+      {$value}
+   {/foreach}
+   <br>
+   {:baby()}<br>
+   {:odb()}
+</body>
+</html>

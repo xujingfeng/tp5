@@ -1,0 +1,82 @@
+{extend name='base/base'}
+{block name='content'}
+<div style="width:1000px; height:545px; background:url(static/img/div3.jpg);">
+  <div style="width:1000px; height:50px;">
+    <div style="line-height:50px; border:1px solid #ccc;width:100px; background-color:#ccc; border-radius:10px; margin-left:400px;">
+    	 <a href="#" style="text-align:center; margin-left:20px; text-decoration:none;">添加分类</a>
+    </div>
+  </div>
+  <div style=" height:150px; width:1000px; height:495px;">
+    <br/><br/>
+    <table class="table" style="margin-left:0px; ">
+
+        <tr align="center">
+            <td class="active" style="width: 120px">
+                <select class="form-control" style="width: 120px">
+                    <option value="0">主分类</option>
+                       {foreach $arr as $v}
+                        <option    value="{$v['id']}">{$v['num']|str_repeat='->',###}{$v['title']}</option>
+                    {/foreach}
+                </select>
+            </td>
+            <td class="success" style="width: 120px">
+                <input type="text"  class="form-control" name="title" style="width: 150px">
+            </td>
+            <td class="warning" style="width: 120px;cursor: pointer;" id='addclass' >添加子级分类</td>
+        </tr>
+    </table>
+  </div>
+
+</div>
+
+{/block}
+{block name='js'}
+    <script type="text/javascript">
+        $(function(){
+            id=0;
+            $("select").change(function(){
+                id=$(this).val();
+            });
+            name ='';
+            $("input").change(function(){
+                name=$(this).val();
+            });
+            $('#addclass').hover(function(){
+                $('#addclass').css('color','green');
+            });
+            $('#addclass').mouseout(function(){
+                $('#addclass').css('color','');
+            });
+            $('#addclass').click(function(){
+
+                $.ajax({
+                    type:'post',
+                    url:'addclass',
+                    dataType:'json',
+                    data:{
+                        ids:id,
+                        names:name
+                    },
+                    success:function(data)
+                    {
+                    	var datas=JSON.parse(data);
+                        if(datas.status==1)
+                                {
+                                    alert('添加成功');
+                                    window.location.assign('addclass');
+                                }
+                    },
+                    beforeSend:function()
+                    {
+                       
+                                if(name=='')
+                                        {
+                                            alert('商品类别不能为空');
+                                            return false;
+                                        }
+                    }
+                });
+            });
+        });
+    </script>
+{/block}

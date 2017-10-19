@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>验证码</title>
+</head>
+<body>
+     <div><img id="imgs" onclick="funclack()" src="{:captcha_src()}" alt=""/></div>
+     <form action="hhh">
+          <input type="text" name="yanzheng">验证码<br>
+          <input type="text" name="name">姓名<br>
+          <input type="text" name="age">年龄<br>
+          <input type="text" name="class">班级<br>
+          <input type="submit" value="验证码">
+
+     </form>
+    <script type="text/javascript">
+    	   function funclack()
+    	   {
+                document.getElementById('imgs').src="{:captcha_src()}?a="+Math.random()*1000;
+    	   }
+    </script>
+</body>
+</html>
